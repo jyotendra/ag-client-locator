@@ -20,7 +20,7 @@ const yelpResponse = {
     longitude: -122.42184275,
   },
   image_url:
-    "http://s-media2.fl.yelpcdn.com/bphoto/MmgtASP3l_t4tPCL1iAsCg/o.jpg",
+    "http://s3-media2.fl.yelpcdn.com/bphoto/MmgtASP3l_t4tPCL1iAsCg/o.jpg",
   location: {
     city: "San Francisco",
     country: "US",

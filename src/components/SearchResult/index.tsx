@@ -6,22 +6,29 @@ import { businessDetails } from "../../shared/types/yelp-response.type";
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useState } from "react";
 import PlaceHolderImage from "./DefaultImage.png";
+import SearchResultPlaceHolder from "../SearchResultPlaceHolder";
 
 const useStyles = makeStyles({
-  displayImage: {},
-  imageContainer: {
-    // height: "15rem",
-    // width: "15rem",
+  displayImage: {
+    height: "15rem",
+    width: "15rem",
   },
   detailSection: {},
   title: {},
   address: {
     paddingTop: "5%",
+    paddingLeft: "5%",
   },
   ratingContainer: {
-    paddingTop: "15%",
+    paddingTop: "14%",
+    paddingLeft: "5%",
   },
   rating: {},
+  reviewCount: {
+    position: "relative",
+    display: "inline-block",
+    left: "3%",
+  },
   score: {},
   favorite: {
     paddingRight: "8%",
@@ -33,19 +40,36 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
   const classes = useStyles();
   const [imgUrl, setImgUrl] = useState(placeInfo.image_url);
   return (
-    <LazyLoad>
+    <LazyLoad
+      height={280}
+      offset={100}
+      placeholder={<SearchResultPlaceHolder />}
+    >
       <Paper>
         <Grid container>
-          <Grid item className={classes.displayImage} md={3}>
-            <Paper elevation={0} className={classes.imageContainer}>
-              <img
-                style={{ maxWidth: "100%", maxHeight: "100%" }}
-                src={imgUrl}
-                onError={() => {
-                  setImgUrl(PlaceHolderImage);
-                }}
-              />
-            </Paper>
+          <Grid
+            container
+            direction="column"
+            item
+            className={classes.displayImage}
+            justifyContent="center"
+            alignItems="stretch"
+            md={3}
+          >
+            <img
+              style={{
+                display: "block",
+                width: "auto",
+                height: "auto",
+                maxWidth: "100%",
+                maxHeight: "100%",
+              }}
+              src={imgUrl}
+              onError={() => {
+                setImgUrl(PlaceHolderImage);
+              }}
+            />
+            {/* <Paper elevation={0} className={classes.imageContainer}></Paper> */}
           </Grid>
           <Grid item md={8}>
             <Grid
@@ -59,6 +83,7 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
                   <Typography variant="h4">{placeInfo.name}</Typography>
                 </Grid>
               </Grid>
+              {/* <Grid container item> */}
               <Grid item className={classes.address}>
                 <Typography variant="h6">
                   {[
@@ -75,12 +100,17 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
               </Grid>
               <Grid item className={classes.ratingContainer}>
                 <Grid container>
-                  <Grid item md={6}>
+                  <Grid container item md={6}>
                     <Rating
                       name="simple-controlled"
                       value={Math.floor(placeInfo.rating)}
                       readOnly
                     />
+                    <Typography variant="body1" className={classes.reviewCount}>
+                      {placeInfo.review_count
+                        ? `(${placeInfo.review_count})`
+                        : ""}
+                    </Typography>
                   </Grid>
                   <Grid item md={6}>
                     <Typography variant="body1">

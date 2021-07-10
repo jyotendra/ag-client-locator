@@ -5,7 +5,7 @@ export const colorPalette = {
         main: "#F9814A",
     },
     secondary: {
-        main: "#ffffff",
+        main: "#FFFFFF",
     }
 }
 
