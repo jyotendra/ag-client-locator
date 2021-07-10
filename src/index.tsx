@@ -7,6 +7,8 @@ import reportWebVitals from "./reportWebVitals";
 import store, { persistor } from "./app-store/store";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
+import { ThemeProvider } from "@material-ui/core";
+import { theme } from "./theme";
 
 if (process.env.NODE_ENV === "production") {
   // removes all console statements from prod
@@ -17,7 +19,9 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <React.StrictMode>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </React.StrictMode>
     </PersistGate>
   </Provider>,

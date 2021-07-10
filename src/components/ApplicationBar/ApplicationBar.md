@@ -3,6 +3,6 @@ import { ThemeProvider } from "@material-ui/core";
 import { theme } from "../../theme";
 
 <ThemeProvider theme={theme}>
-  <Loader />
+  <ApplicationBar title="Client Locator" />
 </ThemeProvider>;
 ```

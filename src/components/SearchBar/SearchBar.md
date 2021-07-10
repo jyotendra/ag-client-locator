@@ -3,6 +3,10 @@ import { ThemeProvider } from "@material-ui/core";
 import { theme } from "../../theme";
 
 <ThemeProvider theme={theme}>
-  <Loader />
+  <SearchBar
+    cback={(val) => {
+      console.log(val);
+    }}
+  />
 </ThemeProvider>;
 ```
