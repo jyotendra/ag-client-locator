@@ -1,15 +1,15 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import { makeStyles } from "@material-ui/styles";
+// import { makeStyles } from "@material-ui/styles";
 
-const useStyles = makeStyles({
-  appBarIcon: {
-    color: "#ffffff",
-  },
-});
+// const useStyles = makeStyles({
+//   appBarIcon: {
+//     color: "#ffffff",
+//   },
+// });
 
 const ApplicationBar = ({ title }: appBarProps) => {
-  const classes = useStyles();
+  // const classes = useStyles();
   return (
     <AppBar position="static">
       <Toolbar>
