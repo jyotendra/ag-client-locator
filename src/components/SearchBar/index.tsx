@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const useStyles = makeStyles({
   searchBar: {
-    width: "90%",
+    width: "100%",
   },
 });
 

@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Paper, Typography, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import LazyLoad from "react-lazyload";
 import Rating from "@material-ui/lab/Rating";
@@ -41,6 +41,7 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
   const [imgUrl, setImgUrl] = useState(placeInfo.image_url);
   return (
     <LazyLoad
+      overflow={true}
       height={280}
       offset={100}
       placeholder={<SearchResultPlaceHolder />}

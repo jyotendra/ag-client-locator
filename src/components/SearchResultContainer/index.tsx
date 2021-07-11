@@ -1,5 +1,5 @@
 import { Grid, makeStyles, Paper } from "@material-ui/core";
-import { yelpResponseType } from "../../shared/types/yelp-response.type";
+import { businessDetails } from "../../shared/types/yelp-response.type";
 import SearchResult from "../SearchResult";
 
 const useStyles = makeStyles({
@@ -13,13 +13,13 @@ const useStyles = makeStyles({
   },
 });
 
-const SearchResultContainer = ({ searchResults }: searchResultProps) => {
+const SearchResultContainer = ({ businessDetails }: searchResultProps) => {
   const classes = useStyles();
   return (
     <Paper elevation={2}>
       <div className={classes.scrollableDiv}>
         <Grid container justifyContent="space-evenly">
-          {searchResults.businesses.map((b, indx) => (
+          {businessDetails.map((b: any, indx: number) => (
             <Grid key={`res-${indx}`} item className={classes.content}>
               <SearchResult placeInfo={b} />
             </Grid>
@@ -31,7 +31,7 @@ const SearchResultContainer = ({ searchResults }: searchResultProps) => {
 };
 
 type searchResultProps = {
-  searchResults: yelpResponseType;
+  businessDetails: businessDetails[];
 };
 
 export default SearchResultContainer;
