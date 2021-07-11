@@ -5,7 +5,6 @@ import {
   RectShape,
   RoundShape,
   TextBlock,
-  TextRow,
 } from "react-placeholder/lib/placeholders";
 import "react-placeholder/lib/reactPlaceholder.css";
 
@@ -117,8 +116,8 @@ const SearchResultPlaceHolder = () => {
   );
 };
 
-type placeImageProps = {
-  imageUrl: string;
-};
+// type placeImageProps = {
+//   imageUrl: string;
+// };
 
 export default SearchResultPlaceHolder;

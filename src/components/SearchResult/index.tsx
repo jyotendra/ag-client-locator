@@ -68,6 +68,7 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
               onError={() => {
                 setImgUrl(PlaceHolderImage);
               }}
+              alt=""
             />
             {/* <Paper elevation={0} className={classes.imageContainer}></Paper> */}
           </Grid>
