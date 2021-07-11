@@ -23,6 +23,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
+  blacklist: ["home"]
 }
 
 const persistedReducer = persistReducer(persistConfig, createRootReducer(history))

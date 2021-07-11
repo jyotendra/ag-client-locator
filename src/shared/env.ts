@@ -1,1 +1,2 @@
-export const API_URL = process.env["REACT_APP_API_URL"];
+export const YELP_API = process.env["REACT_APP_YELP_API"];
+export const YELP_KEY = process.env["REACT_APP_YELP_CRED"];
