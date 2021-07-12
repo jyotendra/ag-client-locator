@@ -9,30 +9,27 @@ import PlaceHolderImage from "./DefaultImage.png";
 import SearchResultPlaceHolder from "../SearchResultPlaceHolder";
 
 const useStyles = makeStyles({
-  displayImage: {
-    // height: "15rem",
-    // width: "15rem",
+  root: {
+    flexGrow: 1,
   },
-  detailSection: {},
-  title: {},
-  address: {
-    paddingTop: "5%",
-    paddingLeft: "5%",
+  paper: {
+    margin: "auto",
+    maxWidth: "50rem",
   },
-  ratingContainer: {
-    paddingTop: "14%",
-    paddingLeft: "5%",
+  image: {
+    width: "10rem",
+    height: "10rem",
+    margin: "auto",
   },
-  rating: {},
-  reviewCount: {
-    position: "relative",
-    display: "inline-block",
-    left: "3%",
+  img: {
+    display: "block",
+    width: "auto",
+    height: "auto",
+    maxWidth: "100%",
+    maxHeight: "100%",
   },
-  score: {},
-  favorite: {
-    paddingRight: "8%",
-    paddingTop: "8%",
+  score: {
+    marginLeft: "10rem",
   },
 });
 
@@ -53,102 +50,79 @@ const SearchResult = ({ placeInfo }: searchResultProp) => {
       offset={100}
       placeholder={<SearchResultPlaceHolder />}
     >
-      <Grid container>
-        <Grid item md={1}></Grid>
-        <Grid item md={10}>
-          <Paper elevation={3}>
-            <ButtonBase focusRipple onClick={() => handleClick()}>
-              <Grid container justifyContent="center">
+      <div className={classes.root}>
+        <Paper className={classes.paper}>
+          <ButtonBase focusRipple onClick={() => handleClick()}>
+            <Grid
+              container
+              spacing={2}
+              alignItems="center"
+              justifyContent="space-evenly"
+            >
+              <Grid item md={3}>
                 <Grid
                   container
                   item
                   direction="column"
-                  className={classes.displayImage}
                   justifyContent="center"
-                  alignItems="stretch"
-                  md={3}
+                  className={classes.image}
                 >
-                  <Grid item style={{ padding: "1rem" }}></Grid>
-                  <Grid item>
-                    <img
-                      style={{
-                        display: "block",
-                        width: "auto",
-                        height: "auto",
-                        maxWidth: "100%",
-                        maxHeight: "100%",
-                      }}
-                      src={imgUrl}
-                      onError={() => {
-                        setImgUrl(PlaceHolderImage);
-                      }}
-                      alt=""
-                    />
-                  </Grid>
-                  <Grid item style={{ padding: "1rem" }}></Grid>
-                  {/* <Paper elevation={0} className={classes.imageContainer}></Paper> */}
+                  <img
+                    className={classes.img}
+                    src={imgUrl}
+                    onError={() => {
+                      setImgUrl(PlaceHolderImage);
+                    }}
+                    alt=""
+                  />
                 </Grid>
-                <Grid item md={8}>
-                  <Grid
-                    container
-                    className={classes.detailSection}
-                    alignItems="center"
-                    alignContent="center"
-                  >
-                    <Grid item md={12} className={classes.title}>
-                      <Grid container item justifyContent="center">
-                        <Typography variant="h4">{placeInfo.name}</Typography>
-                      </Grid>
+              </Grid>
+              <Grid item md={9} container direction="column" spacing={4}>
+                <Grid item>
+                  <Typography variant="h5">{placeInfo.name}</Typography>
+                </Grid>
+                <Grid item container justifyContent="flex-start">
+                  <Grid item>
+                    <Typography variant="h6">
+                      {[
+                        placeInfo.location.address1,
+                        placeInfo.location.address2,
+                        placeInfo.location.address3,
+                        placeInfo.location.city,
+                        placeInfo.location.state,
+                        placeInfo.location.country,
+                      ]
+                        .filter((add) => add !== "")
+                        .join(", ")}
+                    </Typography>
+                  </Grid>
+                  <Grid item container spacing={1} alignItems="center">
+                    <Grid item>
+                      <Rating
+                        name="simple-controlled"
+                        value={placeInfo.rating}
+                        readOnly
+                      />
                     </Grid>
-                    {/* <Grid container item> */}
-                    <Grid item md={12} className={classes.address}>
-                      <Typography variant="h6">
-                        {[
-                          placeInfo.location.address1,
-                          placeInfo.location.address2,
-                          placeInfo.location.address3,
-                          placeInfo.location.city,
-                          placeInfo.location.state,
-                          placeInfo.location.country,
-                        ]
-                          .filter((add) => add !== "")
-                          .join(", ")}
+                    <Grid item>
+                      <Typography variant="body1">
+                        {placeInfo.review_count
+                          ? `(${placeInfo.review_count})`
+                          : ""}
                       </Typography>
                     </Grid>
-                    <Grid item md={12} className={classes.ratingContainer}>
-                      <Grid container>
-                        <Grid container item md={6}>
-                          <Rating
-                            name="simple-controlled"
-                            value={Math.floor(placeInfo.rating)}
-                            readOnly
-                          />
-                          <Typography
-                            variant="body1"
-                            className={classes.reviewCount}
-                          >
-                            {placeInfo.review_count
-                              ? `(${placeInfo.review_count})`
-                              : ""}
-                          </Typography>
-                        </Grid>
-                        <Grid item md={6}>
-                          <Typography variant="body1">
-                            {placeInfo.rating
-                              ? `Score: ${placeInfo.rating}`
-                              : ""}
-                          </Typography>
-                        </Grid>
-                      </Grid>
+                    <Grid item className={classes.score}>
+                      <Typography variant="body1">
+                        {placeInfo.rating ? `Score: ${placeInfo.rating}` : ""}
+                      </Typography>
                     </Grid>
                   </Grid>
                 </Grid>
               </Grid>
-            </ButtonBase>
-          </Paper>
-        </Grid>
-        <Grid item md={1}></Grid>
-      </Grid>
+            </Grid>
+          </ButtonBase>
+        </Paper>
+      </div>
     </LazyLoad>
   );
 };

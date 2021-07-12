@@ -43,7 +43,7 @@ const NoData = ({ fillColor, height, width }: noDataProps) => {
       </Grid>
       <Grid item xs={12} className={classes.infoText}>
         <Typography color="primary" variant="caption">
-          No Parking Spaces Available
+          Try New Keyword
         </Typography>
       </Grid>
     </Grid>

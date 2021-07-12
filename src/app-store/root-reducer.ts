@@ -4,10 +4,7 @@ import { connectRouter } from 'connected-react-router'
 
 
 // ************* Reducers *********************
-import appLayout from "../pages/appLayout/appLayout.slice";
 
-
-// *************** Epics ***************
 import home, { homeEpic } from '../pages/home/home.slice';
 
 export const rootEpic = combineEpics(
@@ -16,8 +13,7 @@ export const rootEpic = combineEpics(
 
 const createRootReducer = (history: any) => combineReducers({
   router: connectRouter(history),
-  home,
-  appLayout
+  home
 });
 
 export default createRootReducer;
