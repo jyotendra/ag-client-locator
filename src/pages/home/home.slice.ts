@@ -27,7 +27,7 @@ const homeSlice = createSlice({
         receivedSearchResults: (state, action: PayloadAction<resultsRecievedActionPayload>) => {
             if (action.payload.results && action.payload.results.businesses) {
                 state.showLoader = false;
-                state.searchResults = action.payload.results.businesses;
+                state.searchResults = action.payload.results.businesses.sort((a, b) => a.rating - b.rating);
             }
         },
         fetchErrorOccurred: (state, action: PayloadAction<errorOccurredActionPayload>) => {
