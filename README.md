@@ -1,6 +1,6 @@
 Application to find least performing parking spaces by location, using Yelp API.
 
-Usage:
+## Usage:
 
 To find least performing parking spaces in a location - type the location name in the search-bar provided. The location name should be sufficiently specific, the app won't return  any result for too broad an area.
 
