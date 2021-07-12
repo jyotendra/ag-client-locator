@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     padding: "10%",
   },
   infoText: {
-    marginRight: "20%",
+    marginRight: "25%",
   },
 });
 

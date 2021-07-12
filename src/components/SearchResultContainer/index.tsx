@@ -18,9 +18,9 @@ const SearchResultContainer = ({ businessDetails }: searchResultProps) => {
   return (
     <Paper elevation={2}>
       <div className={classes.scrollableDiv}>
-        <Grid container justifyContent="space-evenly">
+        <Grid container direction="column">
           {businessDetails.map((b: any, indx: number) => (
-            <Grid key={`res-${indx}`} item className={classes.content}>
+            <Grid item key={`res-${indx}`} className={classes.content}>
               <SearchResult placeInfo={b} />
             </Grid>
           ))}
