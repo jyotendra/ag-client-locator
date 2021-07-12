@@ -58,7 +58,7 @@ export const Home = () => {
           container
           direction="column"
           justifyContent="space-around"
-          alignItems="stretch"
+          alignItems="center"
           // alignContent="center"
         >
           <Grid container item>
@@ -74,11 +74,11 @@ export const Home = () => {
               <Loader />
             ) : searchResults.length > 0 ? (
               <Grid container>
-                <Grid item md={2}></Grid>
-                <Grid item md={8}>
+                <Grid item md={1}></Grid>
+                <Grid item md={10}>
                   {<SearchResultContainer businessDetails={searchResults} />}
                 </Grid>
-                <Grid item md={2}></Grid>
+                <Grid item md={1}></Grid>
               </Grid>
             ) : (
               <NoData
