@@ -112,5 +112,5 @@ const yelpResponse = {
     },
   },
 };
-<SearchResultContainer searchResults={yelpResponse} />;
+<SearchResultContainer businessDetails={yelpResponse.businesses} />;
 ```
