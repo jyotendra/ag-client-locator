@@ -1,5 +1,4 @@
 import AppRoutes from "./routes";
-import "./App.scss";
 import AppLayout from "./pages/appLayout";
 import React from "react";
 
